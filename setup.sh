@@ -6,3 +6,5 @@ if [[ -f "/opt/homebrew/bin/brew" ]]; then
 else # On linux
 	apt install zoxide fzf fd bat delta eza tldr nvim tmux
 fi
+
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm

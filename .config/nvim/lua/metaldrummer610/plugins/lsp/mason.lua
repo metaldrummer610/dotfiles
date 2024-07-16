@@ -30,7 +30,6 @@ return {
 				"bzl",
 				"docker-compose-language-service",
 				"dockerfile-language-server",
-				"goimports",
 				"gopls",
 				"tsserver",
 				"html",
@@ -57,6 +56,7 @@ return {
 				"gomodifytags",
 				"impl", -- Generates implementations of interfaces in Go
 				"gofumpt",
+				"goimports",
 			},
 		})
 	end,
