@@ -2,7 +2,7 @@
 
 # On a mac
 if [[ -f "/opt/homebrew/bin/brew" ]]; then
-	brew install zoxide fzf fd bat git-delta eza tldr nvim tmux font-jetbrains-mono-nerd-font ripgrep
+	brew install zoxide fzf fd bat git-delta eza tldr nvim tmux font-jetbrains-mono-nerd-font ripgrep stow
 else # On linux
 	sudo apt install zoxide fzf fd-find bat delta tldr neovim tmux
 

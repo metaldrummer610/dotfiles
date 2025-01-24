@@ -29,7 +29,6 @@ return {
 			ensure_installed = {
 				"bzl",
 				"docker-compose-language-service",
-				"dockerfile-language-server",
 				"gopls",
 				"tsserver",
 				"html",
