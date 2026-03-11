@@ -8,12 +8,15 @@ info() {
 # On a mac
 if [[ -f "/opt/homebrew/bin/brew" ]]; then
   info "Detected macOS (Homebrew)"
-  brew install zoxide fzf fd bat git-delta eza tldr nvim tmux font-jetbrains-mono-nerd-font ripgrep stow
+  brew install zoxide fzf fd bat git-delta eza tldr nvim tmux font-jetbrains-mono-nerd-font ripgrep stow \
+    atuin yazi btop mise dust sd hyperfine ghostty \
+    difftastic ast-grep buf golangci-lint grpcurl jless glow lazydocker
 
 else # On linux
   info "Detected Linux (apt)"
   sudo apt update
-  sudo apt install -y zoxide fzf fd-find bat git-delta tldr neovim tmux ripgrep stow
+  sudo apt install -y zoxide fzf fd-find bat git-delta tldr neovim tmux ripgrep stow \
+    btop du-dust hyperfine
 
   # Install eza from its dedicated repository
   if ! command -v eza &>/dev/null; then
@@ -23,6 +26,40 @@ else # On linux
     sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
     sudo apt update
     sudo apt install -y eza
+  fi
+
+  # Install tools via curl/cargo/go installers
+  if ! command -v atuin &>/dev/null; then
+    info "Installing atuin..."
+    curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
+  fi
+
+  if ! command -v mise &>/dev/null; then
+    info "Installing mise..."
+    curl https://mise.run | sh
+  fi
+
+  if command -v cargo &>/dev/null; then
+    info "Installing Rust-based tools via cargo..."
+    cargo install --locked yazi-fm yazi-cli 2>/dev/null || true
+    cargo install sd difftastic ast-grep jless 2>/dev/null || true
+  fi
+
+  if command -v go &>/dev/null; then
+    info "Installing Go-based tools..."
+    go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest
+    go install github.com/charmbracelet/glow@latest
+    go install github.com/jesseduffield/lazydocker@latest
+  fi
+
+  if ! command -v golangci-lint &>/dev/null && command -v go &>/dev/null; then
+    info "Installing golangci-lint..."
+    curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/HEAD/install.sh | sh -s -- -b "$(go env GOPATH)/bin"
+  fi
+
+  if ! command -v buf &>/dev/null; then
+    info "Installing buf..."
+    curl -sSL "https://github.com/bufbuild/buf/releases/latest/download/buf-$(uname -s)-$(uname -m)" -o /usr/local/bin/buf && chmod +x /usr/local/bin/buf
   fi
 
   # Install JetBrains Mono Nerd Font
@@ -49,3 +86,4 @@ stow .
 
 info "Done! Open a new zsh shell to complete Zinit plugin installation."
 info "Then run 'tmux' and press prefix + I to install tmux plugins."
+info "Run 'atuin register' or 'atuin login' to set up shell history sync."

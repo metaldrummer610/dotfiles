@@ -1,0 +1,29 @@
+# Theme
+theme = TokyoNight Night
+
+# Font
+font-family = JetBrains Mono
+font-size = 13
+
+# Window
+window-padding-x = 4
+window-padding-y = 4
+background-opacity = 0.95
+window-decoration = auto
+
+# Cursor
+cursor-style = block
+cursor-style-blink = false
+
+# Mouse
+mouse-hide-while-typing = true
+
+# Shell integration
+shell-integration = zsh
+
+# Clipboard
+clipboard-read = allow
+clipboard-write = allow
+
+# Scrollback
+scrollback-limit = 10000
