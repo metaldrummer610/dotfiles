@@ -1,7 +1,11 @@
 [user]
-	# Set your name and email:
-	# git config --global user.name "Your Name"
-	# git config --global user.email "you@example.com"
+	name = Robbie Diaz
+
+# Work-specific overrides (email, Azure DevOps URLs, LFS, etc.)
+# To make this conditional by directory, change to:
+#   [includeIf "gitdir:~/work/"]
+[include]
+	path = ~/.gitconfig-work
 
 [core]
 	editor = nvim
