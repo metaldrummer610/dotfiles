@@ -95,7 +95,25 @@ alias grep='grep --color=auto'
 alias c='clear'
 alias t='tmux'
 alias ta='tmux attach'
+alias top='btop'
+alias du='dust'
+alias cat='bat'
+alias lg='lazygit'
+alias lzd='lazydocker'
+alias md='glow'
+
+# Yazi file manager wrapper (changes CWD on exit)
+function yy() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    builtin cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
+}
 
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+eval "$(atuin init zsh)"
+eval "$(mise activate zsh)"
