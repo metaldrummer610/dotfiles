@@ -1,3 +1,10 @@
+# OPENSPEC:START
+# OpenSpec shell completions configuration
+fpath=("/Users/rdiaz/.oh-my-zsh/custom/completions" $fpath)
+autoload -Uz compinit
+compinit
+# OPENSPEC:END
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -36,6 +43,8 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
+zinit light MichaelAquilina/zsh-you-should-use
+zinit light fdellwing/zsh-bat
 
 # Add in snippets
 zinit snippet OMZP::git
@@ -117,3 +126,52 @@ eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(atuin init zsh)"
 eval "$(mise activate zsh)"
+source ~/.git-commands.zsh
+
+export PATH=$PATH:~/bin
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/rdiaz/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+alias cs='commitsmith'
+eval "$(direnv hook zsh)"
+
+export HOMEBREW_ARTIFACT_DOMAIN="https://REDACTED_ARTIFACTORY_HOST/artifactory/github-docker-external-remote"
+export HOMEBREW_BOTTLE_DOMAIN="https://REDACTED_ARTIFACTORY_HOST/artifactory/github-docker-external-remote"
+export HOMEBREW_DOCKER_REGISTRY_TOKEN="REDACTED_HOMEBREW_DOCKER_REGISTRY_TOKEN" # select docker>github-docker-external-remote in artifactory set me up
+
+# don't call api every time (get past connection reset)
+# https://apple.stackexchange.com/questions/457385/how-to-stop-brew-downloading-the-formula-each-time-when-using-services-command
+export HOMEBREW_NO_INSTALL_FROM_API=1
+export ARTIFACTORY_PAT=REDACTED_ARTIFACTORY_PAT
+
+# pnpm
+export PNPM_HOME="/Users/rdiaz/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# Added by Windsurf
+export PATH="/Users/rdiaz/.codeium/windsurf/bin:$PATH"
+#export DOCKER_HOST=unix://$HOME/.rd/docker.sock
+#export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock
+#export TESTCONTAINERS_HOST_OVERRIDE=$(rdctl shell ip a show vznat | awk '/inet / {sub("/.*",""); print $2}')
+
+export PATH="/Users/rdiaz/go/bin:$PATH"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
+
+export GEMINI_API_KEY="REDACTED_GEMINI_API_KEY"
+
+export PATH="$HOME/.local/bin:$PATH"
+
+#export NODE_EXTRA_CA_CERTS="$HOME/.certs/echo-root.pem"
+#export SSL_CERT_FILE="$HOME/.certs/echo-root.pem"

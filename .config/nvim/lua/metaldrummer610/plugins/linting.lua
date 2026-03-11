@@ -11,6 +11,15 @@ return {
       typescriptreact = { "eslint_d" },
       svelte = { "eslint_d" },
       python = { "pylint" },
+      go = { "golangcilint" },
+      markdown = { "markdownlint" },
+      proto = { "buf_lint" },
+      sh = { "shellcheck" },
+      bash = { "shellcheck" },
+    }
+
+    lint.linters.markdownlint.args = {
+      "--disable", "MD013", "--",
     }
 
     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
