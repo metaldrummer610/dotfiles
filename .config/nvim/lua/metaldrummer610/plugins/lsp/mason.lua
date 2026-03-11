@@ -30,7 +30,7 @@ return {
 				"bzl",
 				"docker-compose-language-service",
 				"gopls",
-				"tsserver",
+				"ts_ls",
 				"html",
 				"cssls",
 				"tailwindcss",
