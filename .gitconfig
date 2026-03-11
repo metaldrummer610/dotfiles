@@ -27,3 +27,7 @@
 	navigate = true
 	side-by-side = true
 	line-numbers = true
+
+[alias]
+	dft = "!f() { GIT_EXTERNAL_DIFF=difft git diff $@; }; f"
+	dftl = "!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff $@; }; f"
