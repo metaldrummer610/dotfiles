@@ -1,0 +1,29 @@
+[user]
+	# Set your name and email:
+	# git config --global user.name "Your Name"
+	# git config --global user.email "you@example.com"
+
+[core]
+	editor = nvim
+	pager = delta
+	excludesFile = ~/.gitignore_global
+
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = true
+
+[merge]
+	conflictstyle = zdiff3
+
+[diff]
+	colorMoved = default
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	navigate = true
+	side-by-side = true
+	line-numbers = true
