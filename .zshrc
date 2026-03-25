@@ -124,7 +124,6 @@ function yy() {
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
-eval "$(atuin init zsh)"
 eval "$(mise activate zsh)"
 source ~/.git-commands.zsh
 

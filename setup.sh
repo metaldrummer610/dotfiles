@@ -9,7 +9,7 @@ info() {
 if [[ -f "/opt/homebrew/bin/brew" ]]; then
   info "Detected macOS (Homebrew)"
   brew install zoxide fzf fd bat git-delta eza tldr nvim tmux font-jetbrains-mono-nerd-font ripgrep stow \
-    atuin yazi btop mise dust sd hyperfine ghostty \
+    yazi btop mise dust sd hyperfine ghostty \
     difftastic ast-grep buf golangci-lint grpcurl jless glow lazydocker
 
 else # On linux
@@ -29,11 +29,6 @@ else # On linux
   fi
 
   # Install tools via curl/cargo/go installers
-  if ! command -v atuin &>/dev/null; then
-    info "Installing atuin..."
-    curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
-  fi
-
   if ! command -v mise &>/dev/null; then
     info "Installing mise..."
     curl https://mise.run | sh
@@ -86,4 +81,3 @@ stow .
 
 info "Done! Open a new zsh shell to complete Zinit plugin installation."
 info "Then run 'tmux' and press prefix + I to install tmux plugins."
-info "Run 'atuin register' or 'atuin login' to set up shell history sync."
