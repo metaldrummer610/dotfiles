@@ -10,7 +10,7 @@ if [[ -f "/opt/homebrew/bin/brew" ]]; then
   info "Detected macOS (Homebrew)"
   brew install zoxide fzf fd bat git-delta eza tldr nvim tmux font-jetbrains-mono-nerd-font ripgrep stow \
     yazi btop mise dust sd hyperfine ghostty \
-    difftastic ast-grep buf golangci-lint grpcurl jless glow lazydocker
+    difftastic ast-grep buf golangci-lint grpcurl jless glow lazydocker lazygit
 
 else # On linux
   info "Detected Linux (apt)"
@@ -45,6 +45,7 @@ else # On linux
     go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest
     go install github.com/charmbracelet/glow@latest
     go install github.com/jesseduffield/lazydocker@latest
+    go install github.com/jesseduffield/lazygit@latest
   fi
 
   if ! command -v golangci-lint &>/dev/null && command -v go &>/dev/null; then
